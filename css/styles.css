@@ -1,0 +1,28 @@
+@layer reset, base;
+
+@layer reset {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+@layer base {
+  :root {
+    --font-noto: "Noto Sans", sans-serif;
+
+    /* Gradients */
+    --light-gradient-bg: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+    --dark-gradient-bg: linear-gradient(180deg, #040918 0%, #091540 100%);
+  }
+
+  html,
+  body {
+    min-height: 100vh;
+    width: 100%;
+
+    font-family: var(--font-noto);
+    background: var(--light-gradient-bg);
+  }
+}
