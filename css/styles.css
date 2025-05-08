@@ -1,4 +1,6 @@
-@layer reset, base;
+@layer reset, base, container;
+
+@import "components/container.css" layer(container);
 
 @layer reset {
   * {
