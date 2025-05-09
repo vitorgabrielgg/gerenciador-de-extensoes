@@ -1,6 +1,7 @@
-@layer reset, base, container;
+@layer reset, base, container, header;
 
 @import "components/container.css" layer(container);
+@import "components/header.css" layer(header);
 
 @layer reset {
   * {
@@ -40,5 +41,20 @@
 
     font-family: var(--font-noto);
     background: var(--light-gradient-bg);
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+
+    &:focus {
+      outline: 2px solid var(--red-400);
+    }
+
+    @media (min-width: 1024px) {
+      &:focus {
+        outline-offset: 2px;
+      }
+    }
   }
 }
