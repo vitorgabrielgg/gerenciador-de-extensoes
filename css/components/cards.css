@@ -1,0 +1,104 @@
+#cards-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 2.5rem;
+  gap: 1rem;
+  width: 100%;
+
+  .card {
+    background-color: var(--neutral-0);
+    border: 1px solid var(--neutral-200);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 5px 1px rgb(0, 0, 0, 0.1);
+
+    .content {
+      display: flex;
+      gap: 1rem;
+      align-items: start;
+
+      .text {
+        h2 {
+          color: var(--neutral-900);
+          font-size: 1.25rem;
+          margin-bottom: 0.3rem;
+        }
+
+        p {
+          color: var(--neutral-600);
+          font-size: 0.95rem;
+        }
+      }
+    }
+
+    .actions {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .remove-btn {
+        background-color: var(--neutral-0);
+        border: 1px solid var(--neutral-300);
+        color: var(--neutral-900);
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: 2rem;
+      }
+
+      .toggle-btn {
+        height: 22px;
+        width: 42px;
+        border-radius: 2rem;
+        position: relative;
+        background-color: var(--neutral-300);
+        transition: 0.2s background-color;
+
+        &::after {
+          content: "";
+          display: block;
+          height: 18px;
+          width: 18px;
+          background-color: var(--neutral-0);
+          border-radius: 50%;
+          position: absolute;
+          left: 2px;
+          transform: translateY(-50%);
+        }
+      }
+
+      .active-toggle-btn {
+        background-color: var(--red-700);
+        &::after {
+          left: initial;
+          right: 2px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 768px) {
+    .card {
+      padding: 1.2rem;
+      .content .text {
+        h2 {
+          font-size: 1.3rem;
+        }
+
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

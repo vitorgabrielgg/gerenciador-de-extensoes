@@ -1,8 +1,9 @@
-@layer reset, base, container, header, main;
+@layer reset, base, container, header, main, cards;
 
 @import "components/container.css" layer(container);
 @import "components/header.css" layer(header);
 @import "components/main.css" layer(main);
+@import "components/cards.css" layer(cards);
 
 @layer reset {
   * {
@@ -47,6 +48,7 @@
   button {
     cursor: pointer;
     border: none;
+    font-family: var(--font-noto);
 
     &:focus {
       outline: 2px solid var(--red-400);

@@ -22,7 +22,6 @@ main {
           color: var(--neutral-900);
           border-radius: 4rem;
           font-size: 1.2rem;
-          font-family: var(--font-noto);
           border: 1px solid var(--neutral-200);
           transition: 0.2s opacity;
 
