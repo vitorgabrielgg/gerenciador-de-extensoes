@@ -11,6 +11,9 @@
     border: 1px solid var(--neutral-200);
     padding: 1rem;
     border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     box-shadow: 0 2px 5px 1px rgb(0, 0, 0, 0.1);
 
     .content {
