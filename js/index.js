@@ -1,28 +1,73 @@
 const cardsList = document.querySelector("#cards-list");
 
+let cardsData;
+let cardsDataCopy;
+
 load();
 
 async function load() {
-  let cardsData = await loadCardsData();
+  cardsData = await loadCardsData();
   cardsData.forEach(renderCards);
+  listenerToggleButtons();
+  listenerFilterButtons();
+}
 
-  const toggleBtnArray = document.querySelectorAll(".toggle-btn");
-  toggleBtnArray.forEach((toggleBtn) => {
-    toggleBtn.addEventListener("click", () => {
-      cardsData = changeCardState(toggleBtn, cardsData);
+function listenerFilterButtons() {
+  const filterBtnArray = document.querySelectorAll(".filter-btn");
+  filterBtnArray.forEach((filterBtn) => {
+    filterBtn.addEventListener("click", () => {
+      document
+        .querySelector(".active-filter-btn")
+        .classList.remove("active-filter-btn");
+      filterBtn.classList.add("active-filter-btn");
+
+      const listState = filterBtn.textContent;
+
+      cardsList.innerHTML = "";
+      switch (listState) {
+        case "Active":
+          cardsDataCopy = cardsData.filter((card) => card.isActive);
+          break;
+        case "Inactive":
+          cardsDataCopy = cardsData.filter((card) => !card.isActive);
+          break;
+        default:
+          cardsDataCopy = cardsData;
+          break;
+      }
+
+      cardsDataCopy.forEach(renderCards);
+      listenerToggleButtons(listState);
     });
   });
 }
 
-function changeCardState(toggleBtn, cardsDataArray) {
-  toggleBtn.classList.toggle("active-toggle-btn");
-  const currentCardId = toggleBtn.closest(".card").id;
+function listenerToggleButtons(state = "All") {
+  const toggleBtnArray = document.querySelectorAll(".toggle-btn");
+  toggleBtnArray.forEach((toggleBtn) => {
+    toggleBtn.addEventListener("click", () => {
+      cardsData = changeCardState(toggleBtn, cardsData, state);
+    });
+  });
+}
 
-  return (cardsDataArray = cardsDataArray.map((card) =>
-    card.name === currentCardId
+function changeCardState(toggleBtn, cardsDataArray, state) {
+  toggleBtn.classList.toggle("active-toggle-btn");
+  const currentCard = toggleBtn.closest(".card");
+
+  const result = (cardsDataArray = cardsDataArray.map((card) =>
+    card.name === currentCard.id
       ? { ...card, isActive: !card.isActive }
       : { ...card }
   ));
+
+  if (state === "Active" || state === "Inactive") {
+    setTimeout(() => {
+      currentCard.remove();
+    }, 200);
+  }
+
+  return result;
 }
 
 async function loadCardsData() {
