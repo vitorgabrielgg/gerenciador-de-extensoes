@@ -3,8 +3,26 @@ const cardsList = document.querySelector("#cards-list");
 load();
 
 async function load() {
-  const cardsData = await loadCardsData();
+  let cardsData = await loadCardsData();
   cardsData.forEach(renderCards);
+
+  const toggleBtnArray = document.querySelectorAll(".toggle-btn");
+  toggleBtnArray.forEach((toggleBtn) => {
+    toggleBtn.addEventListener("click", () => {
+      cardsData = changeCardState(toggleBtn, cardsData);
+    });
+  });
+}
+
+function changeCardState(toggleBtn, cardsDataArray) {
+  toggleBtn.classList.toggle("active-toggle-btn");
+  const currentCardId = toggleBtn.closest(".card").id;
+
+  return (cardsDataArray = cardsDataArray.map((card) =>
+    card.name === currentCardId
+      ? { ...card, isActive: !card.isActive }
+      : { ...card }
+  ));
 }
 
 async function loadCardsData() {
@@ -27,6 +45,7 @@ function fillContent(cardElement, cardData) {
       .querySelector(".actions .toggle-btn")
       .classList.add("active-toggle-btn");
 
+  cardElement.id = cardData.name;
   cardElement.querySelector(".content .text h2").textContent = cardData.name;
   cardElement.querySelector(".content .text p").textContent =
     cardData.description;
