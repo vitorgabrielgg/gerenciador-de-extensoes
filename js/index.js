@@ -1,11 +1,12 @@
+import { loadCardsData } from "./cards/data.js";
 import { changeTheme } from "./theme.js";
 
 const cardsList = document.querySelector("#cards-list");
 
+load();
+
 let cardsData;
 let cardsDataCopy;
-
-load();
 
 async function load() {
   cardsData = await loadCardsData();
@@ -92,13 +93,6 @@ function changeCardState(toggleBtn, cardsDataArray, state) {
   }
 
   return result;
-}
-
-async function loadCardsData() {
-  const res = await fetch("../data.json");
-  const data = await res.json();
-
-  return data;
 }
 
 function renderCards(card) {
