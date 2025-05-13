@@ -49,6 +49,13 @@
         font-weight: 500;
         padding: 0.5rem 1rem;
         border-radius: 2rem;
+        transition: 0.2s border-color, 0.2s background-color, 0.2s color;
+
+        &:hover {
+          background-color: var(--red-700);
+          border-color: var(--red-700);
+          color: var(--neutral-0);
+        }
       }
 
       .toggle-btn {
@@ -74,6 +81,11 @@
 
       .active-toggle-btn {
         background-color: var(--red-700);
+
+        &:hover {
+          background-color: var(--red-500);
+        }
+
         &::after {
           left: initial;
           right: 2px;
