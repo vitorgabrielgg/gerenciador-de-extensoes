@@ -1,0 +1,95 @@
+.dark {
+  body {
+    background: var(--dark-gradient-bg);
+  }
+
+  header {
+    background-color: var(--neutral-800);
+    box-shadow: none;
+    svg {
+      > g path {
+        fill: var(--red-400);
+      }
+
+      > path {
+        fill: var(--neutral-0);
+      }
+    }
+
+    button {
+      background-color: var(--neutral-700);
+
+      &:hover {
+        background-color: var(--neutral-600);
+      }
+    }
+  }
+
+  main {
+    #extensions-list {
+      > div {
+        h1 {
+          color: var(--neutral-0);
+        }
+
+        nav {
+          .filter-btn {
+            background-color: var(--neutral-700);
+            color: var(--neutral-0);
+            border-color: var(--neutral-600);
+          }
+
+          .active-filter-btn {
+            background-color: var(--red-400);
+            color: var(--neutral-900);
+            border: none;
+          }
+        }
+      }
+
+      #cards-list {
+        .card {
+          background-color: var(--neutral-800);
+          border-color: var(--neutral-600);
+          box-shadow: none;
+
+          .content .text {
+            h2 {
+              color: var(--neutral-0);
+            }
+
+            p {
+              color: var(--neutral-300);
+            }
+          }
+
+          .actions {
+            .remove-btn {
+              background-color: var(--neutral-800);
+              color: var(--neutral-0);
+              border-color: var(--neutral-600);
+
+              &:hover {
+                background-color: var(--red-400);
+                border-color: var(--red-400);
+                color: var(--neutral-900);
+              }
+            }
+
+            .toggle-btn {
+              background-color: var(--neutral-600);
+            }
+
+            .active-toggle-btn {
+              background-color: var(--red-400);
+
+              &:hover {
+                background-color: var(--red-500);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,10 @@
-@layer reset, base, container, header, main, cards;
+@layer reset, base, container, header, main, cards, dark;
 
 @import "components/container.css" layer(container);
 @import "components/header.css" layer(header);
 @import "components/main.css" layer(main);
 @import "components/cards.css" layer(cards);
+@import "themes/dark.css" layer(dark);
 
 @layer reset {
   * {
