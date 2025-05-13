@@ -10,6 +10,18 @@ async function load() {
   cardsData.forEach(renderCards);
   listenerToggleButtons();
   listenerFilterButtons();
+  listenerRemoveButtons();
+}
+
+function listenerRemoveButtons() {
+  const removeBtnArray = document.querySelectorAll(".remove-btn");
+  removeBtnArray.forEach((removeBtn) => {
+    removeBtn.addEventListener("click", () => {
+      const currentCard = removeBtn.closest(".card");
+      currentCard.remove();
+      cardsData = cardsData.filter((card) => card.name !== currentCard.id);
+    });
+  });
 }
 
 function listenerFilterButtons() {
@@ -38,6 +50,7 @@ function listenerFilterButtons() {
 
       cardsDataCopy.forEach(renderCards);
       listenerToggleButtons(listState);
+      listenerRemoveButtons();
     });
   });
 }
