@@ -8,8 +8,14 @@ header {
   border-radius: 0.6rem;
   box-shadow: 0 2px 3px 2px rgb(0, 0, 0, 0.05);
 
-  svg > path {
-    fill: var(--neutral-900);
+  svg {
+    > g path {
+      fill: var(--red-700);
+    }
+
+    > path {
+      fill: var(--neutral-900);
+    }
   }
 
   button {
@@ -17,6 +23,8 @@ header {
     height: 3rem;
     width: 3rem;
     border-radius: 0.6rem;
+    display: grid;
+    place-items: center;
 
     transition: 0.2s background-color;
 
