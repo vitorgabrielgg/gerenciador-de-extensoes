@@ -11,6 +11,15 @@ async function load() {
   listenerToggleButtons();
   listenerFilterButtons();
   listenerRemoveButtons();
+
+  const theme = localStorage.getItem("theme");
+
+  const darkColorScheme = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  ).matches;
+
+  if (theme) changeTheme(theme === "dark");
+  else changeTheme(darkColorScheme);
 }
 
 function listenerRemoveButtons() {
@@ -22,6 +31,28 @@ function listenerRemoveButtons() {
       cardsData = cardsData.filter((card) => card.name !== currentCard.id);
     });
   });
+}
+
+const themeBtn = document.querySelector("header button");
+themeBtn.addEventListener("click", () => {
+  const theme = localStorage.getItem("theme");
+  changeTheme(theme === "light");
+});
+
+function changeTheme(condition) {
+  if (condition) {
+    localStorage.setItem("theme", "dark");
+    document.documentElement.classList.add("dark");
+    document
+      .querySelector("header button > img")
+      .setAttribute("src", "../assets/images/icon-sun.svg");
+  } else {
+    localStorage.setItem("theme", "light");
+    document.documentElement.classList.remove("dark");
+    document
+      .querySelector("header button > img")
+      .setAttribute("src", "../assets/images/icon-moon.svg");
+  }
 }
 
 function listenerFilterButtons() {
