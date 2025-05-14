@@ -28,6 +28,10 @@ main {
           &:hover {
             opacity: 0.7;
           }
+
+          &:focus {
+            border-color: transparent;
+          }
         }
 
         .active-filter-btn {

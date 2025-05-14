@@ -56,6 +56,11 @@
           border-color: var(--red-700);
           color: var(--neutral-0);
         }
+
+        &:focus {
+          border-color: transparent;
+          background-color: var(--neutral-100);
+        }
       }
 
       .toggle-btn {
