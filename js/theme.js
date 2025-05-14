@@ -10,12 +10,12 @@ export function changeTheme(condition) {
     document.documentElement.classList.add("dark");
     document
       .querySelector("header button > img")
-      .setAttribute("src", "../assets/images/icon-sun.svg");
+      .setAttribute("src", "./assets/images/icon-sun.svg");
   } else {
     localStorage.setItem("theme", "light");
     document.documentElement.classList.remove("dark");
     document
       .querySelector("header button > img")
-      .setAttribute("src", "../assets/images/icon-moon.svg");
+      .setAttribute("src", "./assets/images/icon-moon.svg");
   }
 }

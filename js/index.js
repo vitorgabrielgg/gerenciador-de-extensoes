@@ -1,4 +1,4 @@
-import { loadCardsData, setCardsData, setCardsDataCopy } from "./cards/data.js";
+import { loadCardsData, setCardsData } from "./cards/data.js";
 import {
   listenerFilterButtons,
   listenerRemoveButtons,
